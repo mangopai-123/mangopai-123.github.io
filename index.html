@@ -1,0 +1,232 @@
+export default function PortfolioSite() {
+  const works = [
+    {
+      title: "若羌红枣品牌设计",
+      subtitle: "Brand Identity / Packaging",
+      year: "2025",
+      desc: "围绕地域特色与现代消费审美，建立包装视觉系统与品牌识别语言。",
+      image:
+        "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop",
+    },
+    {
+      title: "花漾视觉全案",
+      subtitle: "Visual System / Campaign",
+      year: "2025",
+      desc: "从品牌调性到平面延展，构建统一而富有呼吸感的视觉表达。",
+      image:
+        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1600&auto=format&fit=crop",
+    },
+    {
+      title: "宠物品牌概念设计",
+      subtitle: "Packaging / Illustration",
+      year: "2024",
+      desc: "以温暖、轻松、亲和的视觉语气，打造更年轻化的宠物消费品牌。",
+      image:
+        "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1600&auto=format&fit=crop",
+    },
+  ];
+
+  const services = [
+    "品牌视觉识别系统",
+    "包装设计",
+    "海报与物料延展",
+    "3D 视觉与渲染",
+  ];
+
+  const tools = ["Illustrator", "Photoshop", "Blender", "Figma", "AI Tools"];
+
+  return (
+    <div className="min-h-screen bg-[#f6f3ee] text-neutral-900 selection:bg-black selection:text-white">
+      <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f6f3ee]/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
+          <div className="text-sm tracking-[0.22em] uppercase">DENG TANG YU</div>
+          <nav className="hidden gap-8 text-sm md:flex">
+            <a href="#work" className="hover:opacity-60">作品</a>
+            <a href="#about" className="hover:opacity-60">关于</a>
+            <a href="#contact" className="hover:opacity-60">联系</a>
+          </nav>
+        </div>
+      </header>
+
+      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-12 md:px-10 md:py-24">
+        <div className="md:col-span-7">
+          <div className="mb-4 inline-flex rounded-full border border-black/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-black/60">
+            Portfolio 2026
+          </div>
+          <h1 className="max-w-4xl text-5xl font-medium leading-tight md:text-7xl md:leading-[1.05]">
+            视觉设计师的
+            <span className="block italic text-black/60">在线作品集网站</span>
+          </h1>
+          <p className="mt-8 max-w-2xl text-base leading-8 text-black/70 md:text-lg">
+            我专注于品牌设计、包装设计与视觉系统构建，擅长把品牌定位转化为清晰、克制且具有记忆点的视觉表达。
+          </p>
+          <div className="mt-10 flex flex-wrap gap-4">
+            <a
+              href="#work"
+              className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:translate-y-[-1px] hover:opacity-90"
+            >
+              查看作品
+            </a>
+            <a
+              href="#contact"
+              className="rounded-full border border-black/15 px-6 py-3 text-sm transition hover:bg-white"
+            >
+              联系我
+            </a>
+          </div>
+        </div>
+
+        <div className="md:col-span-5">
+          <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_80px_rgba(0,0,0,0.08)]">
+            <img
+              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
+              alt="designer portfolio"
+              className="h-[420px] w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="work" className="mx-auto max-w-7xl px-6 py-8 md:px-10 md:py-16">
+        <div className="mb-10 flex items-end justify-between gap-6">
+          <div>
+            <div className="text-xs uppercase tracking-[0.24em] text-black/50">Selected Works</div>
+            <h2 className="mt-3 text-3xl md:text-5xl">精选项目</h2>
+          </div>
+          <p className="hidden max-w-md text-sm leading-7 text-black/60 md:block">
+            建议把你最强的 3–6 个项目放在首页，每个项目都进入独立案例页，讲清楚背景、过程和结果。
+          </p>
+        </div>
+
+        <div className="space-y-8">
+          {works.map((work, index) => (
+            <div
+              key={work.title}
+              className="group grid overflow-hidden rounded-[2rem] border border-black/8 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:grid-cols-12"
+            >
+              <div className="md:col-span-7">
+                <img
+                  src={work.image}
+                  alt={work.title}
+                  className="h-[260px] w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-[420px]"
+                />
+              </div>
+              <div className="flex flex-col justify-between p-6 md:col-span-5 md:p-10">
+                <div>
+                  <div className="text-xs uppercase tracking-[0.24em] text-black/45">
+                    0{index + 1} / {work.year}
+                  </div>
+                  <h3 className="mt-4 text-2xl md:text-4xl">{work.title}</h3>
+                  <div className="mt-3 text-sm uppercase tracking-[0.18em] text-black/45">
+                    {work.subtitle}
+                  </div>
+                  <p className="mt-6 text-base leading-8 text-black/65">{work.desc}</p>
+                </div>
+                <button className="mt-8 w-fit rounded-full border border-black/15 px-5 py-3 text-sm transition hover:bg-black hover:text-white">
+                  查看案例
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="mx-auto grid max-w-7xl gap-8 px-6 py-16 md:grid-cols-12 md:px-10">
+        <div className="md:col-span-5">
+          <div className="rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:p-10">
+            <div className="text-xs uppercase tracking-[0.24em] text-black/45">About</div>
+            <h2 className="mt-4 text-3xl md:text-4xl">关于我</h2>
+            <p className="mt-6 text-base leading-8 text-black/65">
+              我关注品牌策略与视觉转译之间的关系，擅长通过图形、版式、色彩与材质语言，建立可持续延展的品牌表达系统。
+            </p>
+          </div>
+        </div>
+
+        <div className="md:col-span-7">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+              <div className="text-sm uppercase tracking-[0.18em] text-black/45">Service</div>
+              <div className="mt-6 space-y-4">
+                {services.map((item) => (
+                  <div key={item} className="border-b border-black/8 pb-4 text-lg">
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
+              <div className="text-sm uppercase tracking-[0.18em] text-black/45">Tools</div>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-full border border-black/10 px-4 py-2 text-sm text-black/70"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-8 text-sm leading-7 text-black/60">
+                这里可以继续补充：教育背景、实习经历、获奖经历、合作品牌或展览信息。
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-4 md:px-10 md:py-12">
+        <div className="rounded-[2rem] bg-black px-8 py-10 text-white md:px-12 md:py-14">
+          <div className="text-xs uppercase tracking-[0.24em] text-white/50">Case Study Tip</div>
+          <h3 className="mt-4 text-2xl md:text-4xl">每个项目详情页建议这样写</h3>
+          <div className="mt-8 grid gap-4 md:grid-cols-5">
+            {[
+              "项目背景",
+              "设计目标",
+              "设计过程",
+              "视觉系统",
+              "最终展示",
+            ].map((item) => (
+              <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-5 text-base">
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
+        <div className="grid gap-8 rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:grid-cols-12 md:p-12">
+          <div className="md:col-span-7">
+            <div className="text-xs uppercase tracking-[0.24em] text-black/45">Contact</div>
+            <h2 className="mt-4 text-3xl md:text-5xl">让作品被更方便地看见</h2>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-black/65">
+              把邮箱、微信、Behance、Instagram 或小红书主页放在这里。你还可以加一个下载 PDF 作品集按钮，方便 HR 直接保存。
+            </p>
+          </div>
+          <div className="space-y-4 md:col-span-5 md:pl-10">
+            <div className="rounded-2xl border border-black/8 p-5">
+              <div className="text-xs uppercase tracking-[0.18em] text-black/45">Email</div>
+              <div className="mt-2 text-lg">hello@yourname.com</div>
+            </div>
+            <div className="rounded-2xl border border-black/8 p-5">
+              <div className="text-xs uppercase tracking-[0.18em] text-black/45">Behance</div>
+              <div className="mt-2 text-lg">behance.net/yourname</div>
+            </div>
+            <div className="rounded-2xl border border-black/8 p-5">
+              <div className="text-xs uppercase tracking-[0.18em] text-black/45">Instagram</div>
+              <div className="mt-2 text-lg">@yourname</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-black/6 px-6 py-8 text-sm text-black/50 md:px-10">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 md:flex-row md:items-center md:justify-between">
+          <div>© 2026 DENG TANG YU</div>
+          <div>Portfolio Website Template</div>
+        </div>
+      </footer>
+    </div>
+  );
+}
