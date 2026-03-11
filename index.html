@@ -1,232 +1,682 @@
-export default function PortfolioSite() {
-  const works = [
-    {
-      title: "若羌红枣品牌设计",
-      subtitle: "Brand Identity / Packaging",
-      year: "2025",
-      desc: "围绕地域特色与现代消费审美，建立包装视觉系统与品牌识别语言。",
-      image:
-        "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop",
-    },
-    {
-      title: "花漾视觉全案",
-      subtitle: "Visual System / Campaign",
-      year: "2025",
-      desc: "从品牌调性到平面延展，构建统一而富有呼吸感的视觉表达。",
-      image:
-        "https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1600&auto=format&fit=crop",
-    },
-    {
-      title: "宠物品牌概念设计",
-      subtitle: "Packaging / Illustration",
-      year: "2024",
-      desc: "以温暖、轻松、亲和的视觉语气，打造更年轻化的宠物消费品牌。",
-      image:
-        "https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1600&auto=format&fit=crop",
-    },
-  ];
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DENG TANG YU Portfolio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  const services = [
-    "品牌视觉识别系统",
-    "包装设计",
-    "海报与物料延展",
-    "3D 视觉与渲染",
-  ];
+    html {
+      scroll-behavior: smooth;
+    }
 
-  const tools = ["Illustrator", "Photoshop", "Blender", "Figma", "AI Tools"];
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: #f6f3ee;
+      color: #171717;
+      line-height: 1.6;
+    }
 
-  return (
-    <div className="min-h-screen bg-[#f6f3ee] text-neutral-900 selection:bg-black selection:text-white">
-      <header className="sticky top-0 z-50 border-b border-black/5 bg-[#f6f3ee]/80 backdrop-blur-xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 md:px-10">
-          <div className="text-sm tracking-[0.22em] uppercase">DENG TANG YU</div>
-          <nav className="hidden gap-8 text-sm md:flex">
-            <a href="#work" className="hover:opacity-60">作品</a>
-            <a href="#about" className="hover:opacity-60">关于</a>
-            <a href="#contact" className="hover:opacity-60">联系</a>
-          </nav>
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(246, 243, 238, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 32px;
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      opacity: 0.6;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 40px;
+      padding-top: 72px;
+      padding-bottom: 96px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 16px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 72px;
+      line-height: 1.05;
+      font-weight: 500;
+      max-width: 760px;
+    }
+
+    .hero h1 .sub {
+      display: block;
+      font-style: italic;
+      color: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero p {
+      margin-top: 28px;
+      max-width: 700px;
+      font-size: 18px;
+      line-height: 1.9;
+      color: rgba(0, 0, 0, 0.68);
+    }
+
+    .hero-buttons {
+      margin-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: #111;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: transparent;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+    }
+
+    .hero-image {
+      overflow: hidden;
+      border-radius: 32px;
+      background: white;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-image img {
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .section {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .section-title {
+      margin-top: 10px;
+      font-size: 52px;
+      font-weight: 500;
+    }
+
+    .section-note {
+      max-width: 420px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .works {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .work-card {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      overflow: hidden;
+      border-radius: 32px;
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .work-card img {
+      height: 420px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .work-card:hover img {
+      transform: scale(1.02);
+    }
+
+    .work-content {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .work-index {
+      font-size: 12px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .work-title {
+      margin-top: 16px;
+      font-size: 38px;
+      font-weight: 500;
+    }
+
+    .work-subtitle {
+      margin-top: 10px;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .work-desc {
+      margin-top: 22px;
+      font-size: 17px;
+      line-height: 1.9;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .work-btn {
+      margin-top: 28px;
+      width: fit-content;
+      padding: 12px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.14);
+      background: transparent;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    .work-btn:hover {
+      background: #111;
+      color: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      border-radius: 32px;
+      padding: 36px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .card-title {
+      margin-top: 14px;
+      font-size: 40px;
+      font-weight: 500;
+    }
+
+    .card-text {
+      margin-top: 22px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .sub-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .mini-title {
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .service-list {
+      margin-top: 22px;
+    }
+
+    .service-item {
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 20px;
+    }
+
+    .tool-list {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tool-tag {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    .tip-box {
+      background: #111;
+      color: white;
+      border-radius: 32px;
+      padding: 40px 48px;
+    }
+
+    .tip-box .section-kicker {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .tip-box h3 {
+      margin-top: 16px;
+      font-size: 42px;
+      font-weight: 500;
+    }
+
+    .tip-grid {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .tip-item {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      font-size: 16px;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 30px;
+      background: white;
+      border-radius: 32px;
+      padding: 40px 48px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+    }
+
+    .contact-title {
+      margin-top: 14px;
+      font-size: 52px;
+      font-weight: 500;
+    }
+
+    .contact-text {
+      margin-top: 22px;
+      max-width: 720px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-item {
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .contact-label {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .contact-value {
+      margin-top: 10px;
+      font-size: 22px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 28px 24px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .work-card,
+      .about-grid,
+      .sub-grid,
+      .contact-box,
+      .tip-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 46px;
+      }
+
+      .section-title,
+      .contact-title,
+      .tip-box h3,
+      .card-title {
+        font-size: 32px;
+      }
+
+      .work-title {
+        font-size: 28px;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero-image img,
+      .work-card img {
+        height: 280px;
+      }
+
+      .work-content,
+      .card,
+      .tip-box,
+      .contact-box {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">DENG TANG YU</div>
+      <nav class="nav">
+        <a href="#work">作品</a>
+        <a href="#about">关于</a>
+        <a href="#contact">联系</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="container hero">
+      <div>
+        <div class="badge">Portfolio 2026</div>
+        <h1>
+          视觉设计师的
+          <span class="sub">在线作品集网站</span>
+        </h1>
+        <p>
+          我专注于品牌设计、包装设计与视觉系统构建，擅长把品牌定位转化为清晰、克制且具有记忆点的视觉表达。
+        </p>
+        <div class="hero-buttons">
+          <a href="#work" class="btn btn-primary">查看作品</a>
+          <a href="#contact" class="btn btn-secondary">联系我</a>
         </div>
-      </header>
+      </div>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-6 py-16 md:grid-cols-12 md:px-10 md:py-24">
-        <div className="md:col-span-7">
-          <div className="mb-4 inline-flex rounded-full border border-black/10 px-4 py-2 text-xs uppercase tracking-[0.24em] text-black/60">
-            Portfolio 2026
-          </div>
-          <h1 className="max-w-4xl text-5xl font-medium leading-tight md:text-7xl md:leading-[1.05]">
-            视觉设计师的
-            <span className="block italic text-black/60">在线作品集网站</span>
-          </h1>
-          <p className="mt-8 max-w-2xl text-base leading-8 text-black/70 md:text-lg">
-            我专注于品牌设计、包装设计与视觉系统构建，擅长把品牌定位转化为清晰、克制且具有记忆点的视觉表达。
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#work"
-              className="rounded-full bg-black px-6 py-3 text-sm text-white transition hover:translate-y-[-1px] hover:opacity-90"
-            >
-              查看作品
-            </a>
-            <a
-              href="#contact"
-              className="rounded-full border border-black/15 px-6 py-3 text-sm transition hover:bg-white"
-            >
-              联系我
-            </a>
-          </div>
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
+          alt="designer portfolio"
+        />
+      </div>
+    </section>
+
+    <section id="work" class="container section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Selected Works</div>
+          <h2 class="section-title">精选项目</h2>
         </div>
+        <p class="section-note">
+          建议把你最强的 3–6 个项目放在首页，每个项目都进入独立案例页，讲清楚背景、过程和结果。
+        </p>
+      </div>
 
-        <div className="md:col-span-5">
-          <div className="overflow-hidden rounded-[2rem] bg-white shadow-[0_20px_80px_rgba(0,0,0,0.08)]">
+      <div class="works">
+        <article class="work-card">
+          <div>
             <img
-              src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1200&auto=format&fit=crop"
-              alt="designer portfolio"
-              className="h-[420px] w-full object-cover"
+              src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=1600&auto=format&fit=crop"
+              alt="若羌红枣品牌设计"
             />
           </div>
-        </div>
-      </section>
-
-      <section id="work" className="mx-auto max-w-7xl px-6 py-8 md:px-10 md:py-16">
-        <div className="mb-10 flex items-end justify-between gap-6">
-          <div>
-            <div className="text-xs uppercase tracking-[0.24em] text-black/50">Selected Works</div>
-            <h2 className="mt-3 text-3xl md:text-5xl">精选项目</h2>
+          <div class="work-content">
+            <div>
+              <div class="work-index">01 / 2025</div>
+              <h3 class="work-title">若羌红枣品牌设计</h3>
+              <div class="work-subtitle">Brand Identity / Packaging</div>
+              <p class="work-desc">
+                围绕地域特色与现代消费审美，建立包装视觉系统与品牌识别语言。
+              </p>
+            </div>
+            <a href="#" class="work-btn">查看案例</a>
           </div>
-          <p className="hidden max-w-md text-sm leading-7 text-black/60 md:block">
-            建议把你最强的 3–6 个项目放在首页，每个项目都进入独立案例页，讲清楚背景、过程和结果。
+        </article>
+
+        <article class="work-card">
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=1600&auto=format&fit=crop"
+              alt="花漾视觉全案"
+            />
+          </div>
+          <div class="work-content">
+            <div>
+              <div class="work-index">02 / 2025</div>
+              <h3 class="work-title">花漾视觉全案</h3>
+              <div class="work-subtitle">Visual System / Campaign</div>
+              <p class="work-desc">
+                从品牌调性到平面延展，构建统一而富有呼吸感的视觉表达。
+              </p>
+            </div>
+            <a href="#" class="work-btn">查看案例</a>
+          </div>
+        </article>
+
+        <article class="work-card">
+          <div>
+            <img
+              src="https://images.unsplash.com/photo-1517849845537-4d257902454a?q=80&w=1600&auto=format&fit=crop"
+              alt="宠物品牌概念设计"
+            />
+          </div>
+          <div class="work-content">
+            <div>
+              <div class="work-index">03 / 2024</div>
+              <h3 class="work-title">宠物品牌概念设计</h3>
+              <div class="work-subtitle">Packaging / Illustration</div>
+              <p class="work-desc">
+                以温暖、轻松、亲和的视觉语气，打造更年轻化的宠物消费品牌。
+              </p>
+            </div>
+            <a href="#" class="work-btn">查看案例</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="container section">
+      <div class="about-grid">
+        <div class="card">
+          <div class="section-kicker">About</div>
+          <h2 class="card-title">关于我</h2>
+          <p class="card-text">
+            我关注品牌策略与视觉转译之间的关系，擅长通过图形、版式、色彩与材质语言，建立可持续延展的品牌表达系统。
           </p>
         </div>
 
-        <div className="space-y-8">
-          {works.map((work, index) => (
-            <div
-              key={work.title}
-              className="group grid overflow-hidden rounded-[2rem] border border-black/8 bg-white shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:grid-cols-12"
-            >
-              <div className="md:col-span-7">
-                <img
-                  src={work.image}
-                  alt={work.title}
-                  className="h-[260px] w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-[420px]"
-                />
-              </div>
-              <div className="flex flex-col justify-between p-6 md:col-span-5 md:p-10">
-                <div>
-                  <div className="text-xs uppercase tracking-[0.24em] text-black/45">
-                    0{index + 1} / {work.year}
-                  </div>
-                  <h3 className="mt-4 text-2xl md:text-4xl">{work.title}</h3>
-                  <div className="mt-3 text-sm uppercase tracking-[0.18em] text-black/45">
-                    {work.subtitle}
-                  </div>
-                  <p className="mt-6 text-base leading-8 text-black/65">{work.desc}</p>
-                </div>
-                <button className="mt-8 w-fit rounded-full border border-black/15 px-5 py-3 text-sm transition hover:bg-black hover:text-white">
-                  查看案例
-                </button>
-              </div>
+        <div class="sub-grid">
+          <div class="card">
+            <div class="mini-title">Service</div>
+            <div class="service-list">
+              <div class="service-item">品牌视觉识别系统</div>
+              <div class="service-item">包装设计</div>
+              <div class="service-item">海报与物料延展</div>
+              <div class="service-item">3D 视觉与渲染</div>
             </div>
-          ))}
-        </div>
-      </section>
+          </div>
 
-      <section id="about" className="mx-auto grid max-w-7xl gap-8 px-6 py-16 md:grid-cols-12 md:px-10">
-        <div className="md:col-span-5">
-          <div className="rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:p-10">
-            <div className="text-xs uppercase tracking-[0.24em] text-black/45">About</div>
-            <h2 className="mt-4 text-3xl md:text-4xl">关于我</h2>
-            <p className="mt-6 text-base leading-8 text-black/65">
-              我关注品牌策略与视觉转译之间的关系，擅长通过图形、版式、色彩与材质语言，建立可持续延展的品牌表达系统。
+          <div class="card">
+            <div class="mini-title">Tools</div>
+            <div class="tool-list">
+              <span class="tool-tag">Illustrator</span>
+              <span class="tool-tag">Photoshop</span>
+              <span class="tool-tag">Blender</span>
+              <span class="tool-tag">Figma</span>
+              <span class="tool-tag">AI Tools</span>
+            </div>
+            <p class="card-text" style="margin-top: 28px;">
+              这里可以继续补充：教育背景、实习经历、获奖经历、合作品牌或展览信息。
             </p>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div className="md:col-span-7">
-          <div className="grid gap-6 md:grid-cols-2">
-            <div className="rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-              <div className="text-sm uppercase tracking-[0.18em] text-black/45">Service</div>
-              <div className="mt-6 space-y-4">
-                {services.map((item) => (
-                  <div key={item} className="border-b border-black/8 pb-4 text-lg">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
+    <section class="container section" style="padding-top: 16px;">
+      <div class="tip-box">
+        <div class="section-kicker">Case Study Tip</div>
+        <h3>每个项目详情页建议这样写</h3>
+        <div class="tip-grid">
+          <div class="tip-item">项目背景</div>
+          <div class="tip-item">设计目标</div>
+          <div class="tip-item">设计过程</div>
+          <div class="tip-item">视觉系统</div>
+          <div class="tip-item">最终展示</div>
+        </div>
+      </div>
+    </section>
 
-            <div className="rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)]">
-              <div className="text-sm uppercase tracking-[0.18em] text-black/45">Tools</div>
-              <div className="mt-6 flex flex-wrap gap-3">
-                {tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-full border border-black/10 px-4 py-2 text-sm text-black/70"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-              <div className="mt-8 text-sm leading-7 text-black/60">
-                这里可以继续补充：教育背景、实习经历、获奖经历、合作品牌或展览信息。
-              </div>
-            </div>
+    <section id="contact" class="container section">
+      <div class="contact-box">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2 class="contact-title">让作品被更方便地看见</h2>
+          <p class="contact-text">
+            把邮箱、微信、Behance、Instagram 或小红书主页放在这里。你还可以加一个下载 PDF 作品集按钮，方便 HR 直接保存。
+          </p>
+        </div>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <div class="contact-label">Email</div>
+            <div class="contact-value">hello@yourname.com</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Behance</div>
+            <div class="contact-value">behance.net/yourname</div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-label">Instagram</div>
+            <div class="contact-value">@yourname</div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section className="mx-auto max-w-7xl px-6 py-4 md:px-10 md:py-12">
-        <div className="rounded-[2rem] bg-black px-8 py-10 text-white md:px-12 md:py-14">
-          <div className="text-xs uppercase tracking-[0.24em] text-white/50">Case Study Tip</div>
-          <h3 className="mt-4 text-2xl md:text-4xl">每个项目详情页建议这样写</h3>
-          <div className="mt-8 grid gap-4 md:grid-cols-5">
-            {[
-              "项目背景",
-              "设计目标",
-              "设计过程",
-              "视觉系统",
-              "最终展示",
-            ].map((item) => (
-              <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-5 text-base">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
-        <div className="grid gap-8 rounded-[2rem] bg-white p-8 shadow-[0_10px_40px_rgba(0,0,0,0.04)] md:grid-cols-12 md:p-12">
-          <div className="md:col-span-7">
-            <div className="text-xs uppercase tracking-[0.24em] text-black/45">Contact</div>
-            <h2 className="mt-4 text-3xl md:text-5xl">让作品被更方便地看见</h2>
-            <p className="mt-6 max-w-2xl text-base leading-8 text-black/65">
-              把邮箱、微信、Behance、Instagram 或小红书主页放在这里。你还可以加一个下载 PDF 作品集按钮，方便 HR 直接保存。
-            </p>
-          </div>
-          <div className="space-y-4 md:col-span-5 md:pl-10">
-            <div className="rounded-2xl border border-black/8 p-5">
-              <div className="text-xs uppercase tracking-[0.18em] text-black/45">Email</div>
-              <div className="mt-2 text-lg">hello@yourname.com</div>
-            </div>
-            <div className="rounded-2xl border border-black/8 p-5">
-              <div className="text-xs uppercase tracking-[0.18em] text-black/45">Behance</div>
-              <div className="mt-2 text-lg">behance.net/yourname</div>
-            </div>
-            <div className="rounded-2xl border border-black/8 p-5">
-              <div className="text-xs uppercase tracking-[0.18em] text-black/45">Instagram</div>
-              <div className="mt-2 text-lg">@yourname</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="border-t border-black/6 px-6 py-8 text-sm text-black/50 md:px-10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 md:flex-row md:items-center md:justify-between">
-          <div>© 2026 DENG TANG YU</div>
-          <div>Portfolio Website Template</div>
-        </div>
-      </footer>
+  <footer>
+    <div class="footer-inner">
+      <div>© 2026 DENG TANG YU</div>
+      <div>Portfolio Website Template</div>
     </div>
-  );
-}
+  </footer>
+</body>
+</html>
