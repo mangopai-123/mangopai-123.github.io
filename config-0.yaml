@@ -1,0 +1,51 @@
+pipeline:
+  input_dir: "/mnt/workspace/tts/data/Japanese/datas/Emilia-YODAS-new/batch_035"
+  output_dir: "/mnt/workspace/tts/data/Japanese/test/wavs-out-Emilia-YODAS-035"
+  checkpoint_dir: "/mnt/workspace/tts/data/Japanese/test/checkpoints-Emilia-YODAS-035"
+  resume: true
+  device: "cpu"           # 全局默认设备，各模块可覆盖
+  num_workers: 1
+
+modules:
+  audio_normalizer:
+    target_sr: 24000
+    target_dBFS: -20.0
+    max_amplitude_ratio: 0.8
+
+  vocal_separator:
+    model_id: "955717e8"
+    repo_dir: "./pretrain_model/hub/checkpoints"
+    device: "cuda:0"
+
+  denoiser_onnx:
+    model_path: "./pretrain_model/denoiser_model.onnx"
+    enabled: false
+    device: "cuda:0"
+    target_sr: 48000
+    atten_lim_db: 25.0
+    hop_size: 480
+    fft_size: 960
+
+  vad_processor:
+    save_root: "/mnt/workspace/tts/data/Japanese/test/output/vad-EmiliaYODAS"
+    local: true
+    model_name: "silero_vad"
+    auto_save: true
+
+  speaker_diarization:
+    model_config: "pretrain_model/pyannote_models/config.yaml"
+    device: "cuda:0"
+
+  mos_predictor:
+    model_path: "pretrain_model/DNSMOS/DNSMOS/sig_bak_ovr.onnx"
+
+  asr_wav2vec:
+    #model_id: "pretrain_model/Japanese/japanese-wav2vec2-base-rs35kh"
+    model_id: "pretrain_model/Japanese/wav2vec2-xls-r-300m-japanese"
+    device: "cuda:0"
+    log_path: "./output/wav2vec_results.json"
+  
+  asr_whisper:
+    model_id: "pretrain_model/Japanese/whisper-small-japanese/"
+    device: "cuda:0"
+    log_path: "./output/whisper_results.json"
